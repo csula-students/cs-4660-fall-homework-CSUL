@@ -142,24 +142,24 @@ public class AdjacencyListTest {
             graph1.addEdge(new Edge(new Node(1), new Node(2), 1))
         );
     }
-//
-//    @Test
-//    public void testGraph1RemoveEdge() {
-//        assertFalse(
-//            "Removing non-existing edge should return false",
-//            graph1.removeEdge(new Edge(new Node(1), new Node(6), 1))
-//        );
-//
-//        assertTrue(
-//            "Test graph 1 remove edge from 6 to 5",
-//            graph1.removeEdge(new Edge(new Node(6), new Node(5), 1))
-//        );
-//
-//        assertFalse(
-//            "Test graph 1, node 5 and 6 should not be adjacent now",
-//            graph1.adjacent(new Node(5), new Node(6))
-//        );
-//    }
+
+    @Test
+    public void testGraph1RemoveEdge() {
+        assertFalse(
+            "Removing non-existing edge should return false",
+            graph1.removeEdge(new Edge(new Node(1), new Node(6), 1))
+        );
+
+        assertTrue(
+            "Test graph 1 remove edge from 6 to 5",
+            graph1.removeEdge(new Edge(new Node(6), new Node(5), 1))
+        );
+
+        assertFalse(
+            "Test graph 1, node 5 and 6 should not be adjacent now",
+            graph1.adjacent(new Node(5), new Node(6))
+        );
+    }
 //
 //    @Test
 //    public void testGraph2Adjacent() {

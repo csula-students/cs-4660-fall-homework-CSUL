@@ -139,7 +139,11 @@ public class AdjacencyList implements Representation {
 
     @Override
     public boolean removeEdge(Edge x) {
-        return false;
+        if(!adjacencyList.get(x.getFrom()).contains(x)){
+            return false;
+        }
+        adjacencyList.remove(x.getFrom());
+        return true;
     }
 
     @Override
