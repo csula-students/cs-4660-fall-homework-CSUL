@@ -87,7 +87,8 @@ public class AdjacencyList implements Representation {
         for(Edge edge: edges){
             neighbors.add(edge.getTo());
         }
-
+        if(x.getData().toString().equals("9"))
+            System.out.println("Array size in LIST is: " + neighbors.size());
         return  neighbors;
     }
 
@@ -106,8 +107,24 @@ public class AdjacencyList implements Representation {
         if(!adjacencyList.containsKey(x)){
             return false;
         }
+
+
+        for(Map.Entry<Node, Collection<Edge>> entry : adjacencyList.entrySet()){
+                Collection<Edge> edges = entry.getValue();
+                ArrayList<Edge> toBeRemoved = new ArrayList<>();
+                for(Edge edge: edges){
+                   if(edge.getTo().equals(x)){
+                       toBeRemoved.add(edge);
+                   }
+                }
+
+                //now remove
+                for(Edge remEdge: toBeRemoved){
+                    edges.remove(remEdge);
+                }
+            }
         adjacencyList.remove(x);
-        return true;
+            return true;
     }
 
     @Override
