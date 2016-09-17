@@ -93,7 +93,12 @@ public class AdjacencyList implements Representation {
 
     @Override
     public boolean addNode(Node x) {
-        return false;
+        if(adjacencyList.containsKey(x)) {
+            return false;
+        }
+
+        adjacencyList.put(new Node(x), new ArrayList<Edge>());
+        return true;
     }
 
     @Override

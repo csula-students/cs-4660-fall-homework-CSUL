@@ -81,23 +81,23 @@ public class AdjacencyListTest {
             graph1.neighbors(new Node(5))
         );
     }
-//
-//    @Test
-//    public void testGraph1AddNode() {
-//        assertFalse(
-//            "Test graph 1 adding exiting node, should return false",
-//            graph1.addNode(new Node(1))
-//        );
-//        assertFalse(
-//            "Test graph 1 adding exiting node, should return false",
-//            graph1.addNode(new Node(6))
-//        );
-//
-//        assertTrue(
-//            "Test graph 1 adding new node should return true",
-//            graph1.addNode((new Node(11)))
-//        );
-//    }
+
+    @Test
+    public void testGraph1AddNode() {
+        assertFalse(
+            "Test graph 1 adding exiting node, should return false",
+            graph1.addNode(new Node(1))
+        );
+        assertFalse(
+            "Test graph 1 adding exiting node, should return false",
+            graph1.addNode(new Node(6))
+        );
+
+        assertTrue(
+            "Test graph 1 adding new node should return true",
+            graph1.addNode((new Node(11)))
+        );
+    }
 //
 //    @Test
 //    public void testGraph1RemoveNode() {
