@@ -18,8 +18,8 @@ public class ObjectOrientedTest {
     @Before
     public void setup() {
         ClassLoader classLoader = getClass().getClassLoader();
-//        File file1 = new File(classLoader.getResource("homework-1/graph-1.txt").getFile());
-        File file1 = new File("/Users/Sevak/PycharmProjects/Graphs.txt");
+        File file1 = new File(classLoader.getResource("homework-1/graph-1.txt").getFile());
+//        File file1 = new File("/Users/Sevak/PycharmProjects/Graphs.txt");
 
 
 //        File file2 = new File(classLoader.getResource("homework-1/graph-2.txt").getFile());
@@ -106,25 +106,25 @@ public class ObjectOrientedTest {
 //        );
 //    }
 //
-//    @Test
-//    public void testGraph1RemoveNode() {
-//        assertTrue(
-//            "Test graph 1 remove exiting node, should return true",
-//            graph1.removeNode(new Node(6))
-//        );
-//
-//        // test state of graph
-//        assertEquals(
-//            "Test graph 1 after removing node 1, node 9 should not have any neighbor",
-//            Lists.newArrayList(),
-//            graph1.neighbors(new Node(9))
-//        );
-//
-//        assertFalse(
-//            "Test graph 1 remove non-exist node, should return false",
-//            graph1.removeNode(new Node(1234))
-//        );
-//    }
+    @Test
+    public void testGraph1RemoveNode() {
+        assertTrue(
+            "Test graph 1 remove exiting node, should return true",
+            graph1.removeNode(new Node(6))
+        );
+
+        // test state of graph
+        assertEquals(
+            "Test graph 1 after removing node 1, node 9 should not have any neighbor",
+            Lists.newArrayList(),
+            graph1.neighbors(new Node(9))
+        );
+
+        assertFalse(
+            "Test graph 1 remove non-exist node, should return false",
+            graph1.removeNode(new Node(1234))
+        );
+    }
 //
 //    @Test
 //    public void testGraph1AddEdge() {

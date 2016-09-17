@@ -28,10 +28,13 @@ public class ObjectOriented implements Representation {
             numNodes = Integer.parseInt(inFile.nextLine());
             System.out.println(numNodes);
             String[] line;
-            for(int i =0; i < numNodes; ++i) {
-                nodes.add(new Node(i));
+
+            int lineNum =0;
+            while(inFile.hasNextLine()){
+                nodes.add(new Node(lineNum));
                 line = inFile.nextLine().split(":");
                     edges.add(new Edge(new Node(line[0]), new Node(line[1]), Integer.parseInt(line[2])));
+                lineNum++;
             }
 
 
@@ -87,12 +90,19 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean removeEdge(Edge x) {
-        return false;
+            return edges.remove(x);
     }
 
     @Override
     public int distance(Node from, Node to) {
+        Iterator<Edge> it = edges.iterator();
 
+        while (it.hasNext()){
+            Edge e = it.next();
+            if(e.getFrom().equals(from) && e.getTo().equals(to)){
+                return e.getValue();
+            }
+        }
         return 0;
     }
 
