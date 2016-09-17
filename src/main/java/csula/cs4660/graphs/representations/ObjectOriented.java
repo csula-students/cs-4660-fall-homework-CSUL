@@ -3,6 +3,7 @@ package csula.cs4660.graphs.representations;
 
 import csula.cs4660.graphs.Edge;
 import csula.cs4660.graphs.Node;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.*;
 import java.util.*;
@@ -31,9 +32,12 @@ public class ObjectOriented implements Representation {
 
             int lineNum =0;
             while(inFile.hasNextLine()){
-                nodes.add(new Node(lineNum));
+
                 line = inFile.nextLine().split(":");
-                    edges.add(new Edge(new Node(line[0]), new Node(line[1]), Integer.parseInt(line[2])));
+                    edges.add(new Edge(new Node(Integer.parseInt(line[0])), new Node(Integer.parseInt(line[1])), Integer.parseInt(line[2])));
+
+                if(!nodes.contains(new Node(Integer.parseInt(line[0]))))
+                    nodes.add(new Node(Integer.parseInt(line[0])));
                 lineNum++;
             }
 
@@ -74,11 +78,11 @@ public class ObjectOriented implements Representation {
             Edge e = it.next();
             //this following line shoudl work but doesn't...maybe I'm too tired to see the problem... so I did it some other way
                 if(
-//                        (e.getFrom().equals(x) && e.getTo().equals(y)) || (e.getFrom().equals(y) && e.getTo().equals(x))
-                        (e.getFrom().getData().toString().equals(x.getData().toString()) &&
-                    e.getTo().getData().toString().equals(y.getData().toString()))
-            || (e.getFrom().getData().toString().equals(y.getData().toString()) &&
-                        e.getTo().getData().toString().equals(x.getData().toString()))
+                        (e.getFrom().equals(x)) && e.getTo().equals(y) || (e.getFrom().equals(y) && e.getTo().equals(x))
+//                        (e.getFrom().getData().toString().equals(x.getData().toString()) &&
+//                    e.getTo().getData().toString().equals(y.getData().toString()))
+//            || (e.getFrom().getData().toString().equals(y.getData().toString()) &&
+//                        e.getTo().getData().toString().equals(x.getData().toString()))
 
                         ) {
 
@@ -94,37 +98,58 @@ public class ObjectOriented implements Representation {
     @Override
     public List<Node> neighbors(Node x) {
         ArrayList<Node> neighbors = new ArrayList<>();
+
         Iterator<Edge> it = edges.iterator();
 
         while (it.hasNext()){
             Edge e = it.next();
+
             if(e.getFrom().equals(x)){
+                System.out.println("FOUND NEIGHBOR!!");
                 neighbors.add(e.getTo());
             }
         }
-
+        System.out.println("ArrayList size: " + neighbors.size());
         return neighbors;
     }
 
     @Override
     public boolean addNode(Node x) {
-        return false;
+        if(nodes.contains(x)) {
+            System.out.println("Already have " + x.getData().toString() +  " node. Returning False...");
+            return false;
+        }
+        nodes.add(x);
+        return true;
+
+
     }
 
     @Override
     public boolean removeNode(Node x) {
-        if(!nodes.contains(x))
+        System.out.println("SIze of edges: " + edges.size());
+        if(!nodes.contains(x)) {
+            System.out.println("NODE MISSING!!!!");
             return false;
+        }
 
         Iterator<Edge> it = edges.iterator();
-
+        int check =0;
         while (it.hasNext()){
+            check++;
+            System.out.println("Check: " + check);
             Edge e = it.next();
+            System.out.println("Left next");
             if(e.getFrom().equals(x) || e.getTo().equals(x)){
+                System.out.println("Removing node!");
                 edges.remove(e);
-                nodes.remove(x);
+//                nodes.remove(x);
+//                return true;
             }
         }
+        System.out.println("LEft while loop<<<<<<");
+        nodes.remove(x);
+        System.out.println("Gonna return true...");
         return true;
     }
 

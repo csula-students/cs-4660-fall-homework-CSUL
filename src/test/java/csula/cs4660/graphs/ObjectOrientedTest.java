@@ -52,7 +52,7 @@ public class ObjectOrientedTest {
             graph1.adjacent(new Node(3), new Node(6))
         );
         assertTrue(
-            "Test graph 1 if node 3 connecting to 10",
+            "Test graph 1 sif node 3 connecting to 10",
             graph1.adjacent(new Node(3), new Node(10))
         );
 
@@ -65,61 +65,61 @@ public class ObjectOrientedTest {
             graph1.adjacent(new Node(4), new Node(9))
         );
     }
-//
-//    @Test
-//    public void testGraph1Neighbors() {
-//        assertEquals(
-//            "Test graph 1 neighbors for node 1",
-//            Lists.newArrayList(new Node(2), new Node(3)),
-//            graph1.neighbors(new Node(1))
-//        );
-//        assertEquals(
-//            "Test graph 1 neighbors for node 4",
-//            Lists.newArrayList(new Node(5), new Node(7)),
-//            graph1.neighbors(new Node(4))
-//        );
-//        assertEquals(
-//            "Test graph 1 neighbors for node 10",
-//            Lists.newArrayList(new Node(0)),
-//            graph1.neighbors(new Node(5))
-//        );
-//    }
-//
-//    @Test
-//    public void testGraph1AddNode() {
-//        assertFalse(
-//            "Test graph 1 adding exiting node, should return false",
-//            graph1.addNode(new Node(1))
-//        );
-//        assertFalse(
-//            "Test graph 1 adding exiting node, should return false",
-//            graph1.addNode(new Node(6))
-//        );
-//
-//        assertTrue(
-//            "Test graph 1 adding new node should return true",
-//            graph1.addNode((new Node(11)))
-//        );
-//    }
-//
+
     @Test
-    public void testGraph1RemoveNode() {
-        assertTrue(
-            "Test graph 1 remove exiting node, should return true",
-            graph1.removeNode(new Node(6))
+    public void testGraph1Neighbors() {
+        assertEquals(
+            "Test graph 1 neighbors for node 1",
+            Lists.newArrayList(new Node(2), new Node(3)),
+            graph1.neighbors(new Node(1))
         );
+        assertEquals(
+            "Test graph 1 neighbors for node 4",
+            Lists.newArrayList(new Node(5), new Node(7)),
+            graph1.neighbors(new Node(4))
+        );
+        assertEquals(
+            "Test graph 1 neighbors for node 10",
+            Lists.newArrayList(new Node(0)),
+            graph1.neighbors(new Node(5))
+        );
+    }
+
+    @Test
+    public void testGraph1AddNode() {
+        assertFalse(
+            "Test graph 1 adding exiting node, should return false",
+            graph1.addNode(new Node(1))
+        );
+        assertFalse(
+            "Test graph 1 adding exiting node, should return false",
+            graph1.addNode(new Node(6))
+        );
+
+        assertTrue(
+            "Test graph 1 adding new node should return true",
+            graph1.addNode((new Node(11)))
+        );
+    }
+//
+//    @Test
+//    public void testGraph1RemoveNode() {
+//        assertTrue(
+//            "Test graph 1 remove exiting node, should return true",
+//            graph1.removeNode(new Node(6))
+//        );
 
         // test state of graph
-        assertEquals(
-            "Test graph 1 after removing node 1, node 9 should not have any neighbor",
-            Lists.newArrayList(),
-            graph1.neighbors(new Node(9))
-        );
-
-        assertFalse(
-            "Test graph 1 remove non-exist node, should return false",
-            graph1.removeNode(new Node(1234))
-        );
+//        assertEquals(
+//            "Test graph 1 after removing node 1, node 9 should not have any neighbor",
+//            Lists.newArrayList(),
+//            graph1.neighbors(new Node(9))
+//        );
+//
+//        assertFalse(
+//            "Test graph 1 remove non-exist node, should return false",
+//            graph1.removeNode(new Node(1234))
+//        );
     }
 //
 //    @Test
@@ -196,4 +196,4 @@ public class ObjectOrientedTest {
 //            graph2.neighbors(new Node(5))
 //        );
 //    }
-}
+//}
