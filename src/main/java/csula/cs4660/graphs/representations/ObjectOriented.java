@@ -155,7 +155,11 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean addEdge(Edge x) {
-        return false;
+        if(edges.contains(x))
+            return false;
+
+        edges.add(x);
+        return true;
     }
 
     @Override

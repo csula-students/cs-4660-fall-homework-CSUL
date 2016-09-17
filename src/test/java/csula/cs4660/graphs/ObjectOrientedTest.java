@@ -101,7 +101,7 @@ public class ObjectOrientedTest {
             graph1.addNode((new Node(11)))
         );
     }
-//
+
 //    @Test
 //    public void testGraph1RemoveNode() {
 //        assertTrue(
@@ -109,7 +109,7 @@ public class ObjectOrientedTest {
 //            graph1.removeNode(new Node(6))
 //        );
 
-        // test state of graph
+//        // test state of graph
 //        assertEquals(
 //            "Test graph 1 after removing node 1, node 9 should not have any neighbor",
 //            Lists.newArrayList(),
@@ -120,49 +120,49 @@ public class ObjectOrientedTest {
 //            "Test graph 1 remove non-exist node, should return false",
 //            graph1.removeNode(new Node(1234))
 //        );
+//    }
+//
+    @Test
+    public void testGraph1AddEdge() {
+        assertTrue(
+            "Test graph 1 adding new edge from node 1 to 4",
+            graph1.addEdge(new Edge(new Node(1), new Node(4), 1))
+        );
+
+        assertEquals(
+            "Test graph 1 after adding edge from 1 to 4, node 1 should have 2, 3, 4 as neighbors",
+            Lists.newArrayList(new Node(2), new Node(3), new Node(4)),
+            graph1.neighbors(new Node(1))
+        );
+
+        assertTrue(
+            "Test graph 1, node 1 and node 4 should be adjacent now",
+            graph1.adjacent(new Node(1), new Node(4))
+        );
+
+        assertFalse(
+            "If adding existing edge, it should return false",
+            graph1.addEdge(new Edge(new Node(1), new Node(2), 1))
+        );
     }
-//
-//    @Test
-//    public void testGraph1AddEdge() {
-//        assertTrue(
-//            "Test graph 1 adding new edge from node 1 to 4",
-//            graph1.addEdge(new Edge(new Node(1), new Node(4), 1))
-//        );
-//
-//        assertEquals(
-//            "Test graph 1 after adding edge from 1 to 4, node 1 should have 2, 3, 4 as neighbors",
-//            Lists.newArrayList(new Node(2), new Node(3), new Node(4)),
-//            graph1.neighbors(new Node(1))
-//        );
-//
-//        assertTrue(
-//            "Test graph 1, node 1 and node 4 should be adjacent now",
-//            graph1.adjacent(new Node(1), new Node(4))
-//        );
-//
-//        assertFalse(
-//            "If adding existing edge, it should return false",
-//            graph1.addEdge(new Edge(new Node(1), new Node(2), 1))
-//        );
-//    }
-//
-//    @Test
-//    public void testGraph1RemoveEdge() {
-//        assertFalse(
-//            "Removing non-existing edge should return false",
-//            graph1.removeEdge(new Edge(new Node(1), new Node(6), 1))
-//        );
-//
-//        assertTrue(
-//            "Test graph 1 remove edge from 6 to 5",
-//            graph1.removeEdge(new Edge(new Node(6), new Node(5), 1))
-//        );
-//
-//        assertFalse(
-//            "Test graph 1, node 5 and 6 should not be adjacent now",
-//            graph1.adjacent(new Node(5), new Node(6))
-//        );
-//    }
+
+    @Test
+    public void testGraph1RemoveEdge() {
+        assertFalse(
+            "Removing non-existing edge should return false",
+            graph1.removeEdge(new Edge(new Node(1), new Node(6), 1))
+        );
+
+        assertTrue(
+            "Test graph 1 remove edge from 6 to 5",
+            graph1.removeEdge(new Edge(new Node(6), new Node(5), 1))
+        );
+
+        assertFalse(
+            "Test graph 1, node 5 and 6 should not be adjacent now",
+            graph1.adjacent(new Node(5), new Node(6))
+        );
+    }
 
 //    @Test
 //    public void testGraph2Adjacent() {
@@ -196,4 +196,4 @@ public class ObjectOrientedTest {
 //            graph2.neighbors(new Node(5))
 //        );
 //    }
-//}
+}
