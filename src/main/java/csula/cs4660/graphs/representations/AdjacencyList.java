@@ -129,7 +129,12 @@ public class AdjacencyList implements Representation {
 
     @Override
     public boolean addEdge(Edge x) {
-        return false;
+        if(adjacencyList.get(x.getFrom()).contains(x)){
+            return false;
+        }
+
+        adjacencyList.get(x.getFrom()).add(x);
+        return true;
     }
 
     @Override
