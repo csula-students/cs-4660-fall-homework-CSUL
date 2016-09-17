@@ -98,14 +98,14 @@ public class AdjacencyListTest {
             graph1.addNode((new Node(11)))
         );
     }
-//
-//    @Test
-//    public void testGraph1RemoveNode() {
-//        assertTrue(
-//            "Test graph 1 remove exiting node, should return true",
-//            graph1.removeNode(new Node(6))
-//        );
-//
+
+    @Test
+    public void testGraph1RemoveNode() {
+        assertTrue(
+            "Test graph 1 remove exiting node, should return true",
+            graph1.removeNode(new Node(6))
+        );
+
 //        // test state of graph
 //        assertEquals(
 //            "Test graph 1 after removing node 1, node 9 should not have any neighbor",
@@ -117,7 +117,7 @@ public class AdjacencyListTest {
 //            "Test graph 1 remove non-exist node, should return false",
 //            graph1.removeNode(new Node(1234))
 //        );
-//    }
+    }
 //
 //    @Test
 //    public void testGraph1AddEdge() {

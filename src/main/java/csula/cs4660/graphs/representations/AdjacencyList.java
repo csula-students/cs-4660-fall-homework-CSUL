@@ -103,7 +103,11 @@ public class AdjacencyList implements Representation {
 
     @Override
     public boolean removeNode(Node x) {
-        return false;
+        if(!adjacencyList.containsKey(x)){
+            return false;
+        }
+        adjacencyList.remove(x);
+        return true;
     }
 
     @Override
