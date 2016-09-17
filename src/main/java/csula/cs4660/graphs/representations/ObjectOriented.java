@@ -65,8 +65,31 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean adjacent(Node x, Node y) {
-        return false;
-    }
+//        if(!nodes.contains(x) || !nodes.contains(y))
+//            return false;
+
+        Iterator<Edge> it = edges.iterator();
+
+        while (it.hasNext()){
+            Edge e = it.next();
+            //this following line shoudl work but doesn't...maybe I'm too tired to see the problem... so I did it some other way
+                if(
+//                        (e.getFrom().equals(x) && e.getTo().equals(y)) || (e.getFrom().equals(y) && e.getTo().equals(x))
+                        (e.getFrom().getData().toString().equals(x.getData().toString()) &&
+                    e.getTo().getData().toString().equals(y.getData().toString()))
+            || (e.getFrom().getData().toString().equals(y.getData().toString()) &&
+                        e.getTo().getData().toString().equals(x.getData().toString()))
+
+                        ) {
+
+                    return true;
+            }
+        }
+
+
+            return  false;
+        }
+
 
     @Override
     public List<Node> neighbors(Node x) {

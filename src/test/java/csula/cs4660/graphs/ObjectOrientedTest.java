@@ -41,30 +41,30 @@ public class ObjectOrientedTest {
 
 
 
-//    @Test
-//    public void testGraph1Adjacent() {
-//        assertTrue(
-//            "Test graph 1 if node 1 connecting to node 2",
-//            graph1.adjacent(new Node(1), new Node(2))
-//        );
-//        assertTrue(
-//            "Test graph 1 if node 3 connecting to 2",
-//            graph1.adjacent(new Node(3), new Node(6))
-//        );
-//        assertTrue(
-//            "Test graph 1 if node 3 connecting to 10",
-//            graph1.adjacent(new Node(3), new Node(10))
-//        );
-//
-//        assertFalse(
-//            "Test graph 1 if node 1 is not connecting to 6",
-//            graph1.adjacent(new Node(1), new Node(6))
-//        );
-//        assertFalse(
-//            "Test graph 1 if node 4 is not connecting to 9",
-//            graph1.adjacent(new Node(4), new Node(9))
-//        );
-//    }
+    @Test
+    public void testGraph1Adjacent() {
+        assertTrue(
+            "Test graph 1 if node 1 connecting to node 2",
+            graph1.adjacent(new Node(1), new Node(2))
+        );
+        assertTrue(
+            "Test graph 1 if node 3 connecting to 2",
+            graph1.adjacent(new Node(3), new Node(6))
+        );
+        assertTrue(
+            "Test graph 1 if node 3 connecting to 10",
+            graph1.adjacent(new Node(3), new Node(10))
+        );
+
+        assertFalse(
+            "Test graph 1 if node 1 is not connecting to 6",
+            graph1.adjacent(new Node(1), new Node(6))
+        );
+        assertFalse(
+            "Test graph 1 if node 4 is not connecting to 9",
+            graph1.adjacent(new Node(4), new Node(9))
+        );
+    }
 //
 //    @Test
 //    public void testGraph1Neighbors() {
