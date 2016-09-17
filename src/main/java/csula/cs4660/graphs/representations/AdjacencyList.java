@@ -17,7 +17,6 @@ public class AdjacencyList implements Representation {
     private Map<Node, Collection<Edge>> adjacencyList;
 
     public AdjacencyList(File file) {
-        System.out.println("In constructor!!!!");
         adjacencyList = new HashMap<>();
 
         Scanner inFile;
@@ -43,15 +42,6 @@ public class AdjacencyList implements Representation {
                     adjacencyList.put(from, edge);
                 }
 
-            }
-//DEBUG
-            for(Map.Entry<Node, Collection<Edge>> entry : adjacencyList.entrySet()){
-                System.out.print(entry.getKey() + "-> ");
-                Collection<Edge> edges = entry.getValue();
-                for(Edge edge: edges){
-                    System.out.print(edge.toString());
-                }
-                System.out.println();
             }
 
 
@@ -82,13 +72,14 @@ public class AdjacencyList implements Representation {
     @Override
     public List<Node> neighbors(Node x) {
         ArrayList<Node> neighbors = new ArrayList<>();
-        Collection<Edge> edges = adjacencyList.get(x);
+        if(adjacencyList.containsKey(x)) {
+            Collection<Edge> edges = adjacencyList.get(x);
 
-        for(Edge edge: edges){
-            neighbors.add(edge.getTo());
+            for (Edge edge : edges) {
+                neighbors.add(edge.getTo());
+            }
         }
-        if(x.getData().toString().equals("9"))
-            System.out.println("Array size in LIST is: " + neighbors.size());
+
         return  neighbors;
     }
 
@@ -148,7 +139,16 @@ public class AdjacencyList implements Representation {
 
     @Override
     public int distance(Node from, Node to) {
+        if(adjacencyList.containsKey(from)) {
+            Collection<Edge> edges = adjacencyList.get(from);
+            for (Edge edge : edges) {
+                if (edge.getTo().equals(to)) {
+                    return edge.getValue();
+                }
+            }
+        }
         return 0;
+
     }
 
     @Override
