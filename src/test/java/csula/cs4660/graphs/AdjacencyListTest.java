@@ -1,67 +1,68 @@
-//package csula.cs4660.graphs;
-//
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertTrue;
-//
-//import java.io.File;
-//
-//import csula.cs4660.graphs.representations.Representation;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import com.google.common.collect.Lists;
-//
-//public class AdjacencyListTest {
-//    private Graph graph1;
-//    private Graph graph2;
-//
-//    @Before
-//    public void setup() {
-//        ClassLoader classLoader = getClass().getClassLoader();
-//        File file1 = new File(classLoader.getResource("homework-1/graph-1.txt").getFile());
-//        File file2 = new File(classLoader.getResource("homework-1/graph-2.txt").getFile());
-//
-//        graph1 = new Graph(
-//            Representation.of(
-//                Representation.STRATEGY.ADJACENCY_LIST,
-//                file1
-//            )
-//        );
-//
+package csula.cs4660.graphs;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+
+import csula.cs4660.graphs.representations.Representation;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.google.common.collect.Lists;
+
+public class AdjacencyListTest {
+    private Graph graph1;
+    private Graph graph2;
+
+    @Before
+    public void setup() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file1 = new File(classLoader.getResource("homework-1/graph-1.txt").getFile());
+        File file2 = new File(classLoader.getResource("homework-1/graph-2.txt").getFile());
+
+        graph1 = new Graph(
+            Representation.of(
+                Representation.STRATEGY.ADJACENCY_LIST,
+                file1
+            )
+        );
+
 //        graph2 = new Graph(
 //            Representation.of(
 //                Representation.STRATEGY.ADJACENCY_LIST,
 //                file2
 //            )
 //        );
-//    }
-//
-//    @Test
-//    public void testGraph1Adjacent() {
-//        assertTrue(
-//            "Test graph 1 if node 1 connecting to node 2",
-//            graph1.adjacent(new Node(1), new Node(2))
-//        );
-//        assertTrue(
-//            "Test graph 1 if node 3 connecting to 2",
-//            graph1.adjacent(new Node(3), new Node(6))
-//        );
-//        assertTrue(
-//            "Test graph 1 if node 3 connecting to 10",
-//            graph1.adjacent(new Node(3), new Node(10))
-//        );
-//
-//        assertFalse(
-//            "Test graph 1 if node 1 is not connecting to 6",
-//            graph1.adjacent(new Node(1), new Node(6))
-//        );
-//        assertFalse(
-//            "Test graph 1 if node 4 is not connecting to 9",
-//            graph1.adjacent(new Node(4), new Node(9))
-//        );
-//    }
-//
+    }
+
+
+    @Test
+    public void testGraph1Adjacent() {
+        assertTrue(
+            "Test graph 1 if node 1 connecting to node 2",
+            graph1.adjacent(new Node(1), new Node(2))
+        );
+        assertTrue(
+            "Test graph 1 if node 3 connecting to 2",
+            graph1.adjacent(new Node(3), new Node(6))
+        );
+        assertTrue(
+            "Test graph 1 if node 3 connecting to 10",
+            graph1.adjacent(new Node(3), new Node(10))
+        );
+
+        assertFalse(
+            "Test graph 1 if node 1 is not connecting to 6",
+            graph1.adjacent(new Node(1), new Node(6))
+        );
+        assertFalse(
+            "Test graph 1 if node 4 is not connecting to 9",
+            graph1.adjacent(new Node(4), new Node(9))
+        );
+    }
+
 //    @Test
 //    public void testGraph1Neighbors() {
 //        assertEquals(
@@ -192,4 +193,4 @@
 //            graph2.neighbors(new Node(5))
 //        );
 //    }
-//}
+}
