@@ -1,12 +1,11 @@
 package csula.cs4660.graphs.representations;
 
+
 import csula.cs4660.graphs.Edge;
 import csula.cs4660.graphs.Node;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
 
 /**
  * Object oriented representation of graph is using OOP approach to store nodes
@@ -19,6 +18,42 @@ public class ObjectOriented implements Representation {
     private Collection<Edge> edges;
 
     public ObjectOriented(File file) {
+        nodes = new ArrayList<>();
+        edges = new ArrayList<>();
+
+        Scanner inFile;
+        int numNodes;
+        try{
+            inFile = new Scanner(file);
+            numNodes = Integer.parseInt(inFile.nextLine());
+            System.out.println(numNodes);
+            String[] line;
+            for(int i =0; i < numNodes; ++i) {
+                nodes.add(new Node(i));
+                line = inFile.nextLine().split(":");
+                    edges.add(new Edge(new Node(line[0]), new Node(line[1]), Integer.parseInt(line[2])));
+            }
+
+
+
+//        Iterator<Node> it = nodes.iterator();
+//            while(it.hasNext()) {
+//                System.out.println("Node: " + it.next().getData());
+//            }
+//
+//            System.out.println("EDGES size: " + edges.size());
+//            Iterator<Edge> it1 = edges.iterator();
+//            while(it1.hasNext()) {
+//                Edge e = it1.next();
+//                System.out.println(e.getFrom() + ":" + e.getTo() + ":" + e.getValue());
+//            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
     public ObjectOriented() {
@@ -57,6 +92,7 @@ public class ObjectOriented implements Representation {
 
     @Override
     public int distance(Node from, Node to) {
+
         return 0;
     }
 
