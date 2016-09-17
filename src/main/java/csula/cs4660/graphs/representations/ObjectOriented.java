@@ -70,7 +70,17 @@ public class ObjectOriented implements Representation {
 
     @Override
     public List<Node> neighbors(Node x) {
-        return null;
+        ArrayList<Node> neighbors = new ArrayList<>();
+        Iterator<Edge> it = edges.iterator();
+
+        while (it.hasNext()){
+            Edge e = it.next();
+            if(e.getFrom().equals(x)){
+                neighbors.add(e.getTo());
+            }
+        }
+
+        return neighbors;
     }
 
     @Override
@@ -80,7 +90,19 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean removeNode(Node x) {
-        return false;
+        if(!nodes.contains(x))
+            return false;
+
+        Iterator<Edge> it = edges.iterator();
+
+        while (it.hasNext()){
+            Edge e = it.next();
+            if(e.getFrom().equals(x) || e.getTo().equals(x)){
+                edges.remove(e);
+                nodes.remove(x);
+            }
+        }
+        return true;
     }
 
     @Override

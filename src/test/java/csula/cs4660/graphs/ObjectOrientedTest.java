@@ -40,10 +40,6 @@ public class ObjectOrientedTest {
     }
 
 
-    @Test
-    public void runFile(){
-        System.out.println("\nYOooooooooooooooooooo");
-    }
 
 //    @Test
 //    public void testGraph1Adjacent() {
