@@ -27,7 +27,7 @@ public class ObjectOriented implements Representation {
         try{
             inFile = new Scanner(file);
             numNodes = Integer.parseInt(inFile.nextLine());
-            System.out.println(numNodes);
+
             String[] line;
 
             int lineNum =0;
@@ -41,19 +41,6 @@ public class ObjectOriented implements Representation {
                 lineNum++;
             }
 
-
-
-//        Iterator<Node> it = nodes.iterator();
-//            while(it.hasNext()) {
-//                System.out.println("Node: " + it.next().getData());
-//            }
-//
-//            System.out.println("EDGES size: " + edges.size());
-//            Iterator<Edge> it1 = edges.iterator();
-//            while(it1.hasNext()) {
-//                Edge e = it1.next();
-//                System.out.println(e.getFrom() + ":" + e.getTo() + ":" + e.getValue());
-//            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -69,27 +56,15 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean adjacent(Node x, Node y) {
-//        if(!nodes.contains(x) || !nodes.contains(y))
-//            return false;
 
         Iterator<Edge> it = edges.iterator();
 
         while (it.hasNext()){
             Edge e = it.next();
-            //this following line shoudl work but doesn't...maybe I'm too tired to see the problem... so I did it some other way
-                if(
-                        (e.getFrom().equals(x)) && e.getTo().equals(y) || (e.getFrom().equals(y) && e.getTo().equals(x))
-//                        (e.getFrom().getData().toString().equals(x.getData().toString()) &&
-//                    e.getTo().getData().toString().equals(y.getData().toString()))
-//            || (e.getFrom().getData().toString().equals(y.getData().toString()) &&
-//                        e.getTo().getData().toString().equals(x.getData().toString()))
-
-                        ) {
-
+                if((e.getFrom().equals(x)) && e.getTo().equals(y) || (e.getFrom().equals(y) && e.getTo().equals(x))) {
                     return true;
             }
         }
-
 
             return  false;
         }
@@ -105,18 +80,15 @@ public class ObjectOriented implements Representation {
             Edge e = it.next();
 
             if(e.getFrom().equals(x)){
-                System.out.println("FOUND NEIGHBOR!!");
                 neighbors.add(e.getTo());
             }
         }
-        System.out.println("ArrayList size: " + neighbors.size());
         return neighbors;
     }
 
     @Override
     public boolean addNode(Node x) {
         if(nodes.contains(x)) {
-            System.out.println("Already have " + x.getData().toString() +  " node. Returning False...");
             return false;
         }
         nodes.add(x);
@@ -127,30 +99,29 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean removeNode(Node x) {
-        System.out.println("SIze of edges: " + edges.size());
         if(!nodes.contains(x)) {
-            System.out.println("NODE MISSING!!!!");
             return false;
         }
 
         Iterator<Edge> it = edges.iterator();
         int check =0;
+        ArrayList <Edge> toBeRemoved = new ArrayList<>();
         while (it.hasNext()){
             check++;
-            System.out.println("Check: " + check);
             Edge e = it.next();
-            System.out.println("Left next");
             if(e.getFrom().equals(x) || e.getTo().equals(x)){
-                System.out.println("Removing node!");
-                edges.remove(e);
-//                nodes.remove(x);
-//                return true;
+                toBeRemoved.add(e);
             }
         }
-        System.out.println("LEft while loop<<<<<<");
-        nodes.remove(x);
-        System.out.println("Gonna return true...");
-        return true;
+
+        //now remove the edges
+        Iterator rm = toBeRemoved.iterator();
+        while (rm.hasNext()){
+            edges.remove(rm.next());
+        }
+
+        return nodes.remove(x);
+
     }
 
     @Override
