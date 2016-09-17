@@ -29,12 +29,12 @@ public class AdjacencyListTest {
             )
         );
 
-//        graph2 = new Graph(
-//            Representation.of(
-//                Representation.STRATEGY.ADJACENCY_LIST,
-//                file2
-//            )
-//        );
+        graph2 = new Graph(
+            Representation.of(
+                Representation.STRATEGY.ADJACENCY_LIST,
+                file2
+            )
+        );
     }
 
 
@@ -160,24 +160,24 @@ public class AdjacencyListTest {
             graph1.adjacent(new Node(5), new Node(6))
         );
     }
-//
-//    @Test
-//    public void testGraph2Adjacent() {
-//        assertTrue(
-//            "Test graph 2 adjacent on node 1 to 2",
-//            graph2.adjacent(new Node(1), new Node(2))
-//        );
-//
-//        assertTrue(
-//            "Test graph 2 adjacent on node 4 to 5",
-//            graph2.adjacent(new Node(4), new Node(5))
-//        );
-//
-//        assertFalse(
-//            "Test graph 2 adjacent on node 1 to 5, should be false",
-//            graph2.adjacent(new Node(1), new Node(5))
-//        );
-//    }
+
+    @Test
+    public void testGraph2Adjacent() {
+        assertTrue(
+            "Test graph 2 adjacent on node 1 to 2",
+            graph2.adjacent(new Node(1), new Node(2))
+        );
+
+        assertTrue(
+            "Test graph 2 adjacent on node 4 to 5",
+            graph2.adjacent(new Node(4), new Node(5))
+        );
+
+        assertFalse(
+            "Test graph 2 adjacent on node 1 to 5, should be false",
+            graph2.adjacent(new Node(1), new Node(5))
+        );
+    }
 //
 //    @Test
 //    public void testGraph2Neighbors() {

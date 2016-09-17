@@ -45,14 +45,14 @@ public class AdjacencyList implements Representation {
 
             }
 //DEBUG
-//            for(Map.Entry<Node, Collection<Edge>> entry : adjacencyList.entrySet()){
-//                System.out.print(entry.getKey() + "-> ");
-//                Collection<Edge> edges = entry.getValue();
-//                for(Edge edge: edges){
-//                    System.out.print(edge.toString());
-//                }
-//                System.out.println();
-//            }
+            for(Map.Entry<Node, Collection<Edge>> entry : adjacencyList.entrySet()){
+                System.out.print(entry.getKey() + "-> ");
+                Collection<Edge> edges = entry.getValue();
+                for(Edge edge: edges){
+                    System.out.print(edge.toString());
+                }
+                System.out.println();
+            }
 
 
         } catch (FileNotFoundException e) {
