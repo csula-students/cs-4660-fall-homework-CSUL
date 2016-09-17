@@ -63,24 +63,24 @@ public class AdjacencyListTest {
         );
     }
 
-//    @Test
-//    public void testGraph1Neighbors() {
-//        assertEquals(
-//            "Test graph 1 neighbors for node 1",
-//            Lists.newArrayList(new Node(2), new Node(3)),
-//            graph1.neighbors(new Node(1))
-//        );
-//        assertEquals(
-//            "Test graph 1 neighbors for node 4",
-//            Lists.newArrayList(new Node(5), new Node(7)),
-//            graph1.neighbors(new Node(4))
-//        );
-//        assertEquals(
-//            "Test graph 1 neighbors for node 10",
-//            Lists.newArrayList(new Node(0)),
-//            graph1.neighbors(new Node(5))
-//        );
-//    }
+    @Test
+    public void testGraph1Neighbors() {
+        assertEquals(
+            "Test graph 1 neighbors for node 1",
+            Lists.newArrayList(new Node(2), new Node(3)),
+            graph1.neighbors(new Node(1))
+        );
+        assertEquals(
+            "Test graph 1 neighbors for node 4",
+            Lists.newArrayList(new Node(5), new Node(7)),
+            graph1.neighbors(new Node(4))
+        );
+        assertEquals(
+            "Test graph 1 neighbors for node 10",
+            Lists.newArrayList(new Node(0)),
+            graph1.neighbors(new Node(5))
+        );
+    }
 //
 //    @Test
 //    public void testGraph1AddNode() {

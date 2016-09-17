@@ -67,7 +67,6 @@ public class AdjacencyList implements Representation {
     @Override
     public boolean adjacent(Node x, Node y) {
 
-
                 Collection<Edge> edges = adjacencyList.get(x);
 
                 for (Edge edge : edges) {
@@ -77,13 +76,19 @@ public class AdjacencyList implements Representation {
 
                 }
 
-
         return false;
     }
 
     @Override
     public List<Node> neighbors(Node x) {
-        return null;
+        ArrayList<Node> neighbors = new ArrayList<>();
+        Collection<Edge> edges = adjacencyList.get(x);
+
+        for(Edge edge: edges){
+            neighbors.add(edge.getTo());
+        }
+
+        return  neighbors;
     }
 
     @Override
