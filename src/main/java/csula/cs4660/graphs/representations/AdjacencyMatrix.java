@@ -118,8 +118,39 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public boolean removeNode(Node x) {
-        return false;
+
+        if (!Arrays.asList(nodes).contains(x)) {
+            return false;
+        }
+        for (int k = 0; k < numberOfNodes; k++) {
+            if (x.equals(nodes[k])) {
+
+                //decrement the number of nodes
+                numberOfNodes--;
+
+                for (int i = k; i < numberOfNodes; i++) {
+                    nodes[i] = nodes[i + 1];
+                }
+
+                for (int i = k; i < numberOfNodes; i++) {
+                    for (int j = 0; j <= numberOfNodes; j++) {
+                        adjacencyMatrix[i][j] = adjacencyMatrix[i + 1][j];
+                    }
+                }
+
+                for (int i = k; i < numberOfNodes; i++) {
+                    for (int j = 0; j < numberOfNodes; j++) {
+                        adjacencyMatrix[j][i] = adjacencyMatrix[j][i + 1];
+                    }
+                }
+            }
+
+            //
+
+        }
+        return true;
     }
+
 
     @Override
     public boolean addEdge(Edge x){
@@ -140,7 +171,19 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public boolean removeEdge(Edge x) {
-        return false;
+        int from = Integer.parseInt(x.getFrom().getData().toString());
+        int to = Integer.parseInt(x.getTo().getData().toString());
+        int fromIndex = findIndex(x.getFrom());
+        int toIndex = findIndex(x.getTo());
+
+        if(adjacencyMatrix[fromIndex][toIndex] == 0 && adjacencyMatrix[toIndex][fromIndex] ==0){
+            return false;
+        }
+
+        adjacencyMatrix[fromIndex][toIndex] = 0;
+        adjacencyMatrix[toIndex][fromIndex] =0;
+
+        return true;
     }
 
     @Override
