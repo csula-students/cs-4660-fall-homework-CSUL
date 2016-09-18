@@ -63,6 +63,12 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public boolean adjacent(Node x, Node y) {
+        int fromIndex = findIndex(x);
+        int toIndex = findIndex(y);
+
+        if(adjacencyMatrix[fromIndex][toIndex] == 1 || adjacencyMatrix[toIndex][fromIndex] ==1){
+            return true;
+        }
         return false;
     }
 

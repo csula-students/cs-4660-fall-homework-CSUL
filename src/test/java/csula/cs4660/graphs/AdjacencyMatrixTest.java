@@ -131,11 +131,11 @@ public class AdjacencyMatrixTest {
             Lists.newArrayList(new Node(2), new Node(3), new Node(4)),
             graph1.neighbors(new Node(1))
         );
-//
-//        assertTrue(
-//            "Test graph 1, node 1 and node 4 should be adjacent now",
-//            graph1.adjacent(new Node(1), new Node(4))
-//        );
+
+        assertTrue(
+            "Test graph 1, node 1 and node 4 should be adjacent now",
+            graph1.adjacent(new Node(1), new Node(4))
+        );
 //
         assertFalse(
             "If adding existing edge, it should return false",
