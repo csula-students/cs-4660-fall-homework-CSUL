@@ -1,41 +1,42 @@
-//package csula.cs4660.graphs;
-//
-//import com.google.common.collect.Lists;
-//import csula.cs4660.graphs.representations.Representation;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import java.io.File;
-//
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertFalse;
-//import static org.junit.Assert.assertTrue;
-//
-//public class AdjacencyMatrixTest {
-//    private Graph graph1;
-//    private Graph graph2;
-//
-//    @Before
-//    public void setup() {
-//        ClassLoader classLoader = getClass().getClassLoader();
-//        File file1 = new File(classLoader.getResource("homework-1/graph-1.txt").getFile());
-//        File file2 = new File(classLoader.getResource("homework-1/graph-2.txt").getFile());
-//
-//        graph1 = new Graph(
-//            Representation.of(
-//                Representation.STRATEGY.ADJACENCY_MATRIX,
-//                file1
-//            )
-//        );
-//
+package csula.cs4660.graphs;
+
+import com.google.common.collect.Lists;
+import csula.cs4660.graphs.representations.Representation;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class AdjacencyMatrixTest {
+    private Graph graph1;
+    private Graph graph2;
+
+    @Before
+    public void setup() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file1 = new File(classLoader.getResource("homework-1/graph-1.txt").getFile());
+        File file2 = new File(classLoader.getResource("homework-1/graph-2.txt").getFile());
+
+        graph1 = new Graph(
+            Representation.of(
+                Representation.STRATEGY.ADJACENCY_MATRIX,
+                file1
+            )
+        );
+
 //        graph2 = new Graph(
 //            Representation.of(
 //                Representation.STRATEGY.ADJACENCY_MATRIX,
 //                file2
 //            )
 //        );
-//    }
-//
+    }
+
+
 //
 //    @Test
 //    public void testGraph1Adjacent() {
@@ -81,22 +82,22 @@
 //        );
 //    }
 //
-//    @Test
-//    public void testGraph1AddNode() {
-//        assertFalse(
-//            "Test graph 1 adding exiting node, should return false",
-//            graph1.addNode(new Node(1))
-//        );
-//        assertFalse(
-//            "Test graph 1 adding exiting node, should return false",
-//            graph1.addNode(new Node(6))
-//        );
-//
-//        assertTrue(
-//            "Test graph 1 adding new node should return true",
-//            graph1.addNode((new Node(11)))
-//        );
-//    }
+    @Test
+    public void testGraph1AddNode() {
+        assertFalse(
+            "Test graph 1 adding exiting node, should return false",
+            graph1.addNode(new Node(1))
+        );
+        assertFalse(
+            "Test graph 1 adding exiting node, should return false",
+            graph1.addNode(new Node(6))
+        );
+
+        assertTrue(
+            "Test graph 1 adding new node should return true",
+            graph1.addNode((new Node(11)))
+        );
+    }
 //
 //    @Test
 //    public void testGraph1RemoveNode() {
@@ -192,4 +193,4 @@
 //            graph2.neighbors(new Node(5))
 //        );
 //    }
-//}
+}
