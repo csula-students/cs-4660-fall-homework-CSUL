@@ -28,12 +28,12 @@ public class AdjacencyMatrixTest {
             )
         );
 
-//        graph2 = new Graph(
-//            Representation.of(
-//                Representation.STRATEGY.ADJACENCY_MATRIX,
-//                file2
-//            )
-//        );
+        graph2 = new Graph(
+            Representation.of(
+                Representation.STRATEGY.ADJACENCY_MATRIX,
+                file2
+            )
+        );
     }
 
 
@@ -63,25 +63,25 @@ public class AdjacencyMatrixTest {
         );
     }
 
-//    @Test
-//    public void testGraph1Neighbors() {
+    @Test
+    public void testGraph1Neighbors() {
+        assertEquals(
+            "Test graph 1 neighbors for node 1",
+            Lists.newArrayList(new Node(2), new Node(3)),
+            graph1.neighbors(new Node(1))
+        );
 //        assertEquals(
-//            "Test graph 1 neighbors for node 1",
-//            Lists.newArrayList(new Node(2), new Node(3)),
-//            graph1.neighbors(new Node(1))
-//        );
-//        assertEquals(
-//            "Test graph 1 neighbors for node 4",
-//            Lists.newArrayList(new Node(5), new Node(7)),
-//            graph1.neighbors(new Node(4))
+//                "Test graph 1 neighbors for node 4",
+//                Lists.newArrayList(new Node(5), new Node(7)),
+//                graph1.neighbors(new Node(4))
 //        );
 //        assertEquals(
 //            "Test graph 1 neighbors for node 10",
 //            Lists.newArrayList(new Node(0)),
 //            graph1.neighbors(new Node(5))
 //        );
-//    }
-//
+    }
+
     @Test
     public void testGraph1AddNode() {
         assertFalse(
@@ -160,24 +160,24 @@ public class AdjacencyMatrixTest {
             graph1.adjacent(new Node(5), new Node(6))
         );
     }
-//
-//    @Test
-//    public void testGraph2Adjacent() {
-//        assertTrue(
-//            "Test graph 2 adjacent on node 1 to 2",
-//            graph2.adjacent(new Node(1), new Node(2))
-//        );
-//
-//        assertTrue(
-//            "Test graph 2 adjacent on node 4 to 5",
-//            graph2.adjacent(new Node(4), new Node(5))
-//        );
-//
-//        assertFalse(
-//            "Test graph 2 adjacent on node 1 to 5, should be false",
-//            graph2.adjacent(new Node(1), new Node(5))
-//        );
-//    }
+
+    @Test
+    public void testGraph2Adjacent() {
+        assertTrue(
+            "Test graph 2 adjacent on node 1 to 2",
+            graph2.adjacent(new Node(1), new Node(2))
+        );
+
+        assertTrue(
+            "Test graph 2 adjacent on node 4 to 5",
+            graph2.adjacent(new Node(4), new Node(5))
+        );
+
+        assertFalse(
+            "Test graph 2 adjacent on node 1 to 5, should be false",
+            graph2.adjacent(new Node(1), new Node(5))
+        );
+    }
 //
 //    @Test
 //    public void testGraph2Neighbors() {

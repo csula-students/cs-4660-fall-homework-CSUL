@@ -47,10 +47,10 @@ public class AdjacencyMatrix implements Representation {
                 addEdge(new Edge(from, to, value));
 
             }
-//            for(int i =0; i < nodes.length; ++i){
-//
-//                System.out.println(nodes[i] + " ");
-//            }
+            for(int i =0; i < nodes.length; ++i){
+
+                System.out.println(nodes[i] + " ");
+            }
 //            System.out.println(Arrays.deepToString(adjacencyMatrix));
         } catch (FileNotFoundException e) {
             System.out.print(e.getCause());
@@ -76,7 +76,7 @@ public class AdjacencyMatrix implements Representation {
     public List<Node> neighbors(Node x) {
         ArrayList<Node> neighbors = new ArrayList<>();
         int fromIndex = findIndex(x);
-
+        System.out.println("Checking neighbor for Node: " + x.getData().toString());
         for (int i = 0; i <= numberOfNodes; i++){
 
             if(adjacencyMatrix[fromIndex][i] == 1){
