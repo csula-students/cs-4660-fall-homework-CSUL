@@ -2,7 +2,7 @@ package csula.cs4660.graphs.representations;
 
 import csula.cs4660.graphs.Edge;
 import csula.cs4660.graphs.Node;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+import org.omg.CORBA.NO_IMPLEMENT;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +30,7 @@ public class AdjacencyMatrix implements Representation {
             adjacencyMatrix = new int[20][20];
 
             nodes = new Node[20];
-            System.out.println("SIZE: " + nodes.length);
+//            System.out.println("SIZE: " + nodes.length);
             String[] line;
 
             while (inFile.hasNextLine()) {
@@ -44,13 +44,15 @@ public class AdjacencyMatrix implements Representation {
                 if(!Arrays.asList(nodes).contains(to))
                     addNode(to);
 
+
                 addEdge(new Edge(from, to, value));
 
             }
-            for(int i =0; i < nodes.length; ++i){
 
-                System.out.println(nodes[i] + " ");
-            }
+//            for(int i =0; i < nodes.length; ++i){
+//
+//                System.out.println(nodes[i] + " ");
+//            }
 //            System.out.println(Arrays.deepToString(adjacencyMatrix));
         } catch (FileNotFoundException e) {
             System.out.print(e.getCause());
@@ -76,37 +78,51 @@ public class AdjacencyMatrix implements Representation {
     public List<Node> neighbors(Node x) {
         ArrayList<Node> neighbors = new ArrayList<>();
         int fromIndex = findIndex(x);
-        System.out.println("Checking neighbor for Node: " + x.getData().toString());
-        for (int i = 0; i <= numberOfNodes; i++){
+        if(x.getData().toString().equals("4")) {
+            System.out.println("FromIndex is: " + fromIndex);
+        }
+//        System.out.println("Checking neighbor for Node: " + x.getData().toString());
+        if(x.getData().toString().equals("4")){
+            for(int i =0; i < nodes.length; ++i){
 
+                System.out.println(nodes[i] + " ");
+            }
+        }
+
+         for (int i = 0; i <= numberOfNodes; i++){
             if(adjacencyMatrix[fromIndex][i] == 1){
 
-                neighbors.add(nodes[i]);
-                System.out.println("Match!: " + i);
-                System.out.println("Adding NODE: " + nodes[i]);
+                    neighbors.add(nodes[i]);
+                    if(x.getData().toString().equals("4")) {
+                    System.out.println("Match!: " + i);
+                    System.out.println("Adding NODE: " + nodes[i]);
+                }
             }
 
         }
 
-
-        return neighbors;
+        int [] nums = new int[neighbors.size()];
+        for(int i =0; i < nums.length; ++i){
+            nums[i] = Integer.parseInt(neighbors.get(i).getData().toString());
+        }
+        Arrays.sort(nums);
+        ArrayList<Node> newNeighbors = new ArrayList<>();
+        for(int i =0; i < nums.length; ++i){
+            newNeighbors.add(new Node(nums[i]));
+        }
+        return newNeighbors;
     }
 
     @Override
     public boolean addNode(Node x) {
         if(Arrays.asList(nodes).contains(x)){
-            System.out.println("COntains " + x.getData().toString());
+//            System.out.println("COntains " + x.getData().toString());
             return false;
         }
 
-//        if(numberOfNodes == nodes.length){
-//            expandArray();
-//        }
-//        System.out.println("Adding NODE...." + x.getData().toString());
+
         nodes[numberOfNodes] = x;
-//        if(x.getData().toString().equals("11")) {
-//            System.out.println("Number of nodes " + numberOfNodes);
-//        }
+
         for (int i = 0; i <= numberOfNodes; i++){
 
             adjacencyMatrix[numberOfNodes][i] = 0;
@@ -160,12 +176,16 @@ public class AdjacencyMatrix implements Representation {
         int fromIndex = findIndex(x.getFrom());
         int toIndex = findIndex(x.getTo());
 
-        if(adjacencyMatrix[fromIndex][toIndex] == 1 || adjacencyMatrix[toIndex][fromIndex] ==1){
+        if(from == 4){
+            System.out.println("Adding adjecent to 4 -> " + to);
+
+        }
+        if(adjacencyMatrix[fromIndex][toIndex] == 1 ){
             return false;
         }
 
         adjacencyMatrix[fromIndex][toIndex] = 1;
-        adjacencyMatrix[toIndex][fromIndex] =1;
+//        adjacencyMatrix[toIndex][fromIndex] = 0;
         return true;
     }
 
@@ -181,7 +201,7 @@ public class AdjacencyMatrix implements Representation {
         }
 
         adjacencyMatrix[fromIndex][toIndex] = 0;
-        adjacencyMatrix[toIndex][fromIndex] =0;
+//        adjacencyMatrix[toIndex][fromIndex] =0;
 
         return true;
     }
@@ -196,10 +216,6 @@ public class AdjacencyMatrix implements Representation {
         return null;
     }
 
-//    public void expandArray(){
-//        nodes = Arrays.copyOf(nodes, nodes.length + 1);
-//        System.out.print("After expanding : " + Arrays.deepToString(nodes));
-//    }
 
     public int findIndex(Node node)
     {
