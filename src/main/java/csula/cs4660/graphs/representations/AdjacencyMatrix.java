@@ -6,10 +6,7 @@ import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Adjacency matrix in a sense store the nodes in two dimensional array
@@ -50,6 +47,10 @@ public class AdjacencyMatrix implements Representation {
                 addEdge(new Edge(from, to, value));
 
             }
+//            for(int i =0; i < nodes.length; ++i){
+//
+//                System.out.println(nodes[i] + " ");
+//            }
 //            System.out.println(Arrays.deepToString(adjacencyMatrix));
         } catch (FileNotFoundException e) {
             System.out.print(e.getCause());
@@ -67,7 +68,22 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public List<Node> neighbors(Node x) {
-        return null;
+        ArrayList<Node> neighbors = new ArrayList<>();
+        int fromIndex = findIndex(x);
+
+        for (int i = 0; i <= numberOfNodes; i++){
+
+            if(adjacencyMatrix[fromIndex][i] == 1){
+
+                neighbors.add(nodes[i]);
+                System.out.println("Match!: " + i);
+                System.out.println("Adding NODE: " + nodes[i]);
+            }
+
+        }
+
+
+        return neighbors;
     }
 
     @Override
@@ -86,9 +102,7 @@ public class AdjacencyMatrix implements Representation {
 //            System.out.println("Number of nodes " + numberOfNodes);
 //        }
         for (int i = 0; i <= numberOfNodes; i++){
-//            if(x.getData().toString().equals("11")) {
-//                System.out.println("Adding NODE...." + i);
-//            }
+
             adjacencyMatrix[numberOfNodes][i] = 0;
             adjacencyMatrix[i][numberOfNodes] = 0;
         }

@@ -119,29 +119,29 @@ public class AdjacencyMatrixTest {
 //        );
 //    }
 //
-//    @Test
-//    public void testGraph1AddEdge() {
-//        assertTrue(
-//            "Test graph 1 adding new edge from node 1 to 4",
-//            graph1.addEdge(new Edge(new Node(1), new Node(4), 1))
-//        );
-//
-//        assertEquals(
-//            "Test graph 1 after adding edge from 1 to 4, node 1 should have 2, 3, 4 as neighbors",
-//            Lists.newArrayList(new Node(2), new Node(3), new Node(4)),
-//            graph1.neighbors(new Node(1))
-//        );
+    @Test
+    public void testGraph1AddEdge() {
+        assertTrue(
+            "Test graph 1 adding new edge from node 1 to 4",
+            graph1.addEdge(new Edge(new Node(1), new Node(4), 1))
+        );
+
+        assertEquals(
+            "Test graph 1 after adding edge from 1 to 4, node 1 should have 2, 3, 4 as neighbors",
+            Lists.newArrayList(new Node(2), new Node(3), new Node(4)),
+            graph1.neighbors(new Node(1))
+        );
 //
 //        assertTrue(
 //            "Test graph 1, node 1 and node 4 should be adjacent now",
 //            graph1.adjacent(new Node(1), new Node(4))
 //        );
 //
-//        assertFalse(
-//            "If adding existing edge, it should return false",
-//            graph1.addEdge(new Edge(new Node(1), new Node(2), 1))
-//        );
-//    }
+        assertFalse(
+            "If adding existing edge, it should return false",
+            graph1.addEdge(new Edge(new Node(1), new Node(2), 1))
+        );
+    }
 //
 //    @Test
 //    public void testGraph1RemoveEdge() {
