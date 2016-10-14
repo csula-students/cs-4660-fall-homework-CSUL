@@ -216,6 +216,11 @@ public class AdjacencyMatrix implements Representation {
         return null;
     }
 
+    @Override
+    public Collection<Node> getNodes() {
+
+        return Arrays.asList(nodes);
+    }
 
     public int findIndex(Node node)
     {

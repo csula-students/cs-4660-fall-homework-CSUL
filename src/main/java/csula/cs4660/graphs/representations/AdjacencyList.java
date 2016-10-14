@@ -158,4 +158,9 @@ public class AdjacencyList implements Representation {
     public Optional<Node> getNode(int index) {
         return null;
     }
+
+    @Override
+    public Collection<Node> getNodes() {
+        return Arrays.asList((Node)adjacencyList.keySet());
+    }
 }

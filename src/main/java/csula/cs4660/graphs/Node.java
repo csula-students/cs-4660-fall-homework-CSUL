@@ -7,6 +7,10 @@ package csula.cs4660.graphs;
  * http://www.tutorialspoint.com/java/java_generics.htm
  */
 public class Node<T> {
+
+    private int distance;
+    private Node parent;
+
     private final T data;
 
     public Node(T data) {

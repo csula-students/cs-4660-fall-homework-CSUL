@@ -155,4 +155,9 @@ public class ObjectOriented implements Representation {
     public Optional<Node> getNode(int index) {
         return null;
     }
+
+    @Override
+    public Collection<Node> getNodes(){
+        return nodes;
+    }
 }
