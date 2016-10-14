@@ -8,8 +8,8 @@ package csula.cs4660.graphs;
  */
 public class Node<T> {
 
-    private int distance;
-    private Node parent;
+    public int distance;
+    public Node parent;
 
     private final T data;
 
