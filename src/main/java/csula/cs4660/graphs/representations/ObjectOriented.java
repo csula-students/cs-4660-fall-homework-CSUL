@@ -34,7 +34,7 @@ public class ObjectOriented implements Representation {
             while(inFile.hasNextLine()){
 
                 line = inFile.nextLine().split(":");
-                    edges.add(new Edge(new Node(Integer.parseInt(line[0])), new Node(Integer.parseInt(line[1])), Integer.parseInt(line[2])));
+                edges.add(new Edge(new Node(Integer.parseInt(line[0])), new Node(Integer.parseInt(line[1])), Integer.parseInt(line[2])));
 
                 if(!nodes.contains(new Node(Integer.parseInt(line[0]))))
                     nodes.add(new Node(Integer.parseInt(line[0])));
@@ -61,13 +61,13 @@ public class ObjectOriented implements Representation {
 
         while (it.hasNext()){
             Edge e = it.next();
-                if((e.getFrom().equals(x)) && e.getTo().equals(y) || (e.getFrom().equals(y) && e.getTo().equals(x))) {
-                    return true;
+            if((e.getFrom().equals(x)) && e.getTo().equals(y) || (e.getFrom().equals(y) && e.getTo().equals(x))) {
+                return true;
             }
         }
 
-            return  false;
-        }
+        return  false;
+    }
 
 
     @Override
@@ -135,7 +135,7 @@ public class ObjectOriented implements Representation {
 
     @Override
     public boolean removeEdge(Edge x) {
-            return edges.remove(x);
+        return edges.remove(x);
     }
 
     @Override

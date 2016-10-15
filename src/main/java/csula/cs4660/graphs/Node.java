@@ -1,5 +1,9 @@
 package csula.cs4660.graphs;
 
+import org.omg.PortableInterceptor.INACTIVE;
+
+import java.net.Inet4Address;
+
 /**
  * The fundamental class to hold data
  *
@@ -8,8 +12,8 @@ package csula.cs4660.graphs;
  */
 public class Node<T> {
 
-    public int distance;
-    public Node parent;
+    public int distance = Integer.MAX_VALUE;
+    public Node parent = null;
 
     private final T data;
 

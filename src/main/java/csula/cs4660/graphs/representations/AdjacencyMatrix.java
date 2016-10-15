@@ -208,8 +208,9 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public int distance(Node from, Node to) {
-        return 0;
+        return 1;
     }
+
 
     @Override
     public Optional<Node> getNode(int index) {

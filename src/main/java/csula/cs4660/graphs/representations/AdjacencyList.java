@@ -161,6 +161,6 @@ public class AdjacencyList implements Representation {
 
     @Override
     public Collection<Node> getNodes() {
-        return Arrays.asList((Node)adjacencyList.keySet());
+        return adjacencyList.keySet();
     }
 }
