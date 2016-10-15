@@ -15,8 +15,10 @@ import java.util.*;
  */
 public class AdjacencyMatrix implements Representation {
     private Node[] nodes;
+    private Edge [] edges;
     private int[][] adjacencyMatrix;
     private int numberOfNodes =0;
+    private int numberOfEdges =0;
 
 
     public AdjacencyMatrix(File file) {
@@ -30,6 +32,7 @@ public class AdjacencyMatrix implements Representation {
             adjacencyMatrix = new int[20][20];
 
             nodes = new Node[20];
+            edges = new Edge[20];
 //            System.out.println("SIZE: " + nodes.length);
             String[] line;
 
@@ -44,7 +47,8 @@ public class AdjacencyMatrix implements Representation {
                 if(!Arrays.asList(nodes).contains(to))
                     addNode(to);
 
-
+                edges[numberOfEdges] = new Edge(from, to, value);
+                numberOfEdges++;
                 addEdge(new Edge(from, to, value));
 
             }
@@ -171,15 +175,15 @@ public class AdjacencyMatrix implements Representation {
     @Override
     public boolean addEdge(Edge x){
 
-        int from = Integer.parseInt(x.getFrom().getData().toString());
-        int to = Integer.parseInt(x.getTo().getData().toString());
+//        int from = Integer.parseInt(x.getFrom().getData().toString());
+//        int to = Integer.parseInt(x.getTo().getData().toString());
         int fromIndex = findIndex(x.getFrom());
         int toIndex = findIndex(x.getTo());
 
-        if(from == 4){
-            System.out.println("Adding adjecent to 4 -> " + to);
-
-        }
+//        if(from == 4){
+//            System.out.println("Adding adjecent to 4 -> " + to);
+//
+//        }
         if(adjacencyMatrix[fromIndex][toIndex] == 1 ){
             return false;
         }
@@ -208,6 +212,12 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public int distance(Node from, Node to) {
+
+        for(Edge edge: edges){
+            if(edge.getFrom().equals(from) && edge.getTo().equals(to)){
+                return edge.getValue();
+            }
+        }
         return 1;
     }
 
