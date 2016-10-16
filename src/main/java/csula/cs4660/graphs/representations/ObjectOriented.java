@@ -160,4 +160,10 @@ public class ObjectOriented implements Representation {
     public Collection<Node> getNodes(){
         return nodes;
     }
+
+    @Override
+    public Collection<Edge> getEdges(){
+        return edges;
+    }
+
 }

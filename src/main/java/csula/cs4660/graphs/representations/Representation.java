@@ -67,5 +67,7 @@ public interface Representation {
 
     Collection<Node> getNodes();
 
+    Collection<Edge> getEdges();
+
     String toString();
 }

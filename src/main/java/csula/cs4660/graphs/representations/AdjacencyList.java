@@ -163,4 +163,14 @@ public class AdjacencyList implements Representation {
     public Collection<Node> getNodes() {
         return adjacencyList.keySet();
     }
+
+    @Override
+    public Collection<Edge> getEdges() {
+        List<Edge> edges = new ArrayList<>();
+        for (Node node: adjacencyList.keySet()) {
+            adjacencyList.get(node);
+        }
+
+        return  edges;
+    }
 }

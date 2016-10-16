@@ -233,6 +233,11 @@ public class AdjacencyMatrix implements Representation {
         return Arrays.asList(nodes);
     }
 
+    @Override
+    public Collection<Edge> getEdges() {
+
+        return Arrays.asList(edges);
+    }
     public int findIndex(Node node)
     {
         for (int i = 0; i < numberOfNodes; ++i)

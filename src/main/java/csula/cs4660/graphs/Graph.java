@@ -90,6 +90,13 @@ public class Graph {
         return strategy.getNodes();
     }
 
+
+    /**
+     * A simple method to get all edges out of graph
+     */
+    public Collection<Edge> getEdges() {
+        return strategy.getEdges();
+    }
     /**
      * Search through this graph from sourceNode to distNode and return a list
      * of edges in between
