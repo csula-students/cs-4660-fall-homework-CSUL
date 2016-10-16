@@ -3,6 +3,7 @@ package csula.cs4660.graphs;
 import csula.cs4660.graphs.representations.Representation;
 import csula.cs4660.graphs.searches.SearchStrategy;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,6 +81,13 @@ public class Graph {
      */
     public Optional<Node> getNode(int index) {
         return strategy.getNode(index);
+    }
+
+    /**
+     * A simple method to get all nodes out of graph
+     */
+    public Collection<Node> getNodes() {
+        return strategy.getNodes();
     }
 
     /**
