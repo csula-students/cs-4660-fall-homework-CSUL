@@ -6,7 +6,11 @@ import java.util.Comparator;
 public class CompareNode implements Comparator<Node> {
 
     @Override
-    public int compare(Node node1, Node node2){
-       return Double.compare(node1.distance, node2.distance);
+    public int compare(Node node1, Node node2) {
+        if (node1.distance > node2.distance) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }

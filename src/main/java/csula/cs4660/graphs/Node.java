@@ -12,7 +12,7 @@ import java.net.Inet4Address;
  */
 public class Node<T> {
 
-    public double distance = Double.POSITIVE_INFINITY;
+    public int distance = Integer.MAX_VALUE;
     public Node parent = null;
     public Node previousNode = null;
 

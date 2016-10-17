@@ -231,10 +231,12 @@ public class AdjacencyMatrix implements Representation {
     public Collection<Node> getNodes() {
 
         return Arrays.asList(nodes);
+
     }
 
     @Override
     public Collection<Edge> getEdges() {
+        System.out.println("\n\nADJ MATRIX RETURNING: " + Arrays.asList(nodes).size());
 
         return Arrays.asList(edges);
     }

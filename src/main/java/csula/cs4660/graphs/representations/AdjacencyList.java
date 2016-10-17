@@ -170,6 +170,7 @@ public class AdjacencyList implements Representation {
         for (Node node: adjacencyList.keySet()) {
             adjacencyList.get(node);
         }
+        System.out.println("\n\nADJ LIST RETURNING: " + adjacencyList.keySet().size());
 
         return  edges;
     }

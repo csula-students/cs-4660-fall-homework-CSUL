@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Interface to define common behaviors across different representations
