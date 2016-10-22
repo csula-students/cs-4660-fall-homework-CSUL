@@ -168,9 +168,12 @@ public class AdjacencyList implements Representation {
     public Collection<Edge> getEdges() {
         List<Edge> edges = new ArrayList<>();
         for (Node node: adjacencyList.keySet()) {
-            adjacencyList.get(node);
+
+            edges.addAll(adjacencyList.get(node));
         }
-        System.out.println("\n\nADJ LIST RETURNING: " + adjacencyList.keySet().size());
+
+        // private Map<Node, Collection<Edge>> adjacencyList;
+//        System.out.println("\n\nADJ LIST RETURNING: " + edges.size());
 
         return  edges;
     }

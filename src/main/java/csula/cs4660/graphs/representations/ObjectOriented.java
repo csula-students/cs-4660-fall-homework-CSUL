@@ -163,7 +163,7 @@ public class ObjectOriented implements Representation {
 
     @Override
     public Collection<Edge> getEdges(){
-        System.out.println("\n\nOBJECT ORIENTED RETURNING: " + edges.size());
+//        System.out.println("\n\nOBJECT ORIENTED RETURNING: " + edges.size());
         return edges;
     }
 

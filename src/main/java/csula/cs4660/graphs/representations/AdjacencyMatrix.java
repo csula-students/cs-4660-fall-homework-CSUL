@@ -236,7 +236,7 @@ public class AdjacencyMatrix implements Representation {
 
     @Override
     public Collection<Edge> getEdges() {
-        System.out.println("\n\nADJ MATRIX RETURNING: " + Arrays.asList(nodes).size());
+//        System.out.println("\n\nADJ MATRIX RETURNING: " + Arrays.asList(nodes).size());
 
         return Arrays.asList(edges);
     }

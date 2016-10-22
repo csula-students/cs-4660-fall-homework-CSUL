@@ -1,5 +1,6 @@
 package csula.cs4660.graphs;
 
+import org.omg.CORBA.DoubleHolder;
 import org.omg.PortableInterceptor.INACTIVE;
 
 import java.net.Inet4Address;
@@ -12,7 +13,7 @@ import java.net.Inet4Address;
  */
 public class Node<T> {
 
-    public int distance = Integer.MAX_VALUE;
+    public double distance = Double.POSITIVE_INFINITY;
     public Node parent = null;
     public Node previousNode = null;
 
