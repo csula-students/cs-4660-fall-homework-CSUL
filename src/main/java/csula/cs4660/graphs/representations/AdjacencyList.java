@@ -4,7 +4,9 @@ import csula.cs4660.graphs.Edge;
 import csula.cs4660.graphs.Node;
 
 import java.io.File;
+
 import java.io.FileNotFoundException;
+
 import java.util.*;
 
 /**
@@ -54,7 +56,7 @@ public class AdjacencyList implements Representation {
     }
 
     protected AdjacencyList() {
-
+        adjacencyList = new HashMap<>();
     }
 
     @Override
@@ -160,6 +162,7 @@ public class AdjacencyList implements Representation {
     }
 
     @Override
+
     public Collection<Node> getNodes() {
         return adjacencyList.keySet();
     }
@@ -176,5 +179,18 @@ public class AdjacencyList implements Representation {
 //        System.out.println("\n\nADJ LIST RETURNING: " + edges.size());
 
         return  edges;
+    }
+
+
+    public Optional<Node> getNode(Node node) {
+        Iterator<Node> iterator = adjacencyList.keySet().iterator();
+        Optional<Node> result = Optional.empty();
+        while (iterator.hasNext()) {
+            Node next = iterator.next();
+            if (next.equals(node)) {
+                result = Optional.of(next);
+            }
+        }
+        return result;
     }
 }

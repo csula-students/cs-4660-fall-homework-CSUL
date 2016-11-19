@@ -5,13 +5,18 @@ import csula.cs4660.graphs.Node;
 import org.omg.CORBA.NO_IMPLEMENT;
 
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
+
 /**
  * Adjacency matrix in a sense store the nodes in two dimensional array
- *
- * TODO: please fill the method body of this class
  */
 public class AdjacencyMatrix implements Representation {
     private Node[] nodes;
@@ -65,6 +70,10 @@ public class AdjacencyMatrix implements Representation {
 
     public AdjacencyMatrix() {
 
+        adjacencyMatrix = new int[20][20];
+
+        nodes = new Node[20];
+        edges = new Edge[20];
     }
 
     @Override
@@ -228,6 +237,7 @@ public class AdjacencyMatrix implements Representation {
     }
 
     @Override
+
     public Collection<Node> getNodes() {
 
         return Arrays.asList(nodes);
@@ -240,11 +250,24 @@ public class AdjacencyMatrix implements Representation {
 
         return Arrays.asList(edges);
     }
-    public int findIndex(Node node)
-    {
+    public int findIndex(Node node) {
         for (int i = 0; i < numberOfNodes; ++i)
             if (nodes[i].equals(node))
                 return i;
         return -1;
+
+    }
+
+    public Optional<Node> getNode(Node node) {
+        Iterator<Node> iterator = Arrays.asList(nodes).iterator();
+        Optional<Node> result = Optional.empty();
+        while (iterator.hasNext()) {
+            Node next = iterator.next();
+            if (next.equals(node)) {
+                result = Optional.of(next);
+            }
+        }
+        return result;
+
     }
 }

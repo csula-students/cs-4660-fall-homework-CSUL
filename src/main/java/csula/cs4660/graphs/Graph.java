@@ -83,6 +83,10 @@ public class Graph {
         return strategy.getNode(index);
     }
 
+    public Optional<Node> getNode(Node node) {
+        return strategy.getNode(node);
+    }
+
     /**
      * A simple method to get all nodes out of graph
      */
