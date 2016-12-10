@@ -58,7 +58,8 @@ class Player {
             if(isEnemyClose( new Coordinate(currentRow, currentColumn), opponentsLocations , 7 )){
                 Graph graphMinMax = new Graph();
                 graphMinMax = buildGraph(board,currentColumn,currentRow,opponentsLocations);
-                Node best = getBestMove(graphMinMax, new Node<MiniMaxState>(new MiniMaxState(board, 0 , initialState)), 4, true);
+                Node best = getBestMove(graphMinMax, new Node<MiniMaxState>(new MiniMaxState(board, 0 , initialState)), 4
+                        , Integer.MIN_VALUE, Integer.MAX_VALUE,true);
                 int rowInitial = Integer.parseInt(initialState.split("#")[P].split("\\+")[0]);
                 int columnInitial = Integer.parseInt(initialState.split("#")[P].split("\\+")[1]);
                 int row = Integer.parseInt(((MiniMaxState) best.getData()).getMoves().split("#")[P].split("\\+")[0]);
@@ -382,36 +383,40 @@ class Player {
         }
         return null;
     }
-    public static Node getBestMove(Graph graph, Node<MiniMaxState> root, Integer depth, Boolean max) {
+
+    public static Node getBestMove(Graph graph, Node<MiniMaxState> source, Integer depth, Integer alpha, Integer beta, Boolean max) {
         int minimum = Integer.MIN_VALUE;
         int maximum = Integer.MAX_VALUE;
 
+        if (depth == 0 || graph.neighbors(source).size() == 0) {
 
-
-        if (depth == 0 || graph.neighbors(root).size() == 0) {
-
-            int value =evaluvateState(root);
-            root.getData().setValue(value);
-            return root;
+            int value =evaluvateState(source);
+            source.getData().setValue(value);
+            return source;
         }
 
         if(max){
+            Node<MiniMaxState> best = new Node<>(new MiniMaxState(null, Integer.MIN_VALUE,""));
 
-            Node  best = new Node<>(new MiniMaxState(null, Integer.MIN_VALUE,""));
-//            ListIterator it = graph.neighbors(root).listIterator();
-
-            for(Node<MiniMaxState> neightbor: graph.neighbors(root)){
+            for(Node<MiniMaxState> neightbor: graph.neighbors(source)){
                 int newDepth = depth -1;
-                Node<MiniMaxState> tempBest = getBestMove(graph, neightbor, newDepth, false);
+                Node<MiniMaxState> tempBest = getBestMove(graph, neightbor, newDepth, alpha, beta, false);
 
                 if(tempBest.getData().getValue()>((MiniMaxState)best.getData()).getValue()){
-
-                    Node<MiniMaxState> previous = graph.getNode(root).get();
-                    previous.getData().setValue((tempBest.getData()).getValue());
-
                     best = tempBest;
-
                 }
+
+                Node<MiniMaxState> previous = graph.getNode(source).get();
+                previous.getData().setValue((best.getData()).getValue());
+                if(tempBest.getData().getValue() >= beta)
+                    return tempBest;
+
+                if(tempBest.getData().getValue() >= alpha)
+                    alpha = tempBest.getData().getValue();
+
+
+//                    best = tempBest;
+
 
             }
 
@@ -419,29 +424,30 @@ class Player {
         }
 
         else{
+            Node<MiniMaxState>  best = new Node<>(new MiniMaxState(null, Integer.MAX_VALUE,""));
 
-            Node best = new Node<>(new MiniMaxState(null, Integer.MAX_VALUE,""));
-            for(Node<MiniMaxState> neightbor: graph.neighbors(root)){
+            for(Node<MiniMaxState> neightbor: graph.neighbors(source)){
                 int newDepth = depth -1;
+                Node<MiniMaxState> tempBest = getBestMove(graph, neightbor, newDepth, alpha, beta, true);
 
-                Node<MiniMaxState> tempBest = getBestMove(graph, neightbor, newDepth, true);
-                //
-
-                if(tempBest.getData().getValue()<((MiniMaxState)best.getData()).getValue()){
-
-                    Node<MiniMaxState> previous = graph.getNode(root).get();
-                    previous.getData().setValue(((MiniMaxState)tempBest.getData()).getValue());
-
-                    best=  tempBest;
-
+                if(tempBest.getData().getValue() < ((MiniMaxState)best.getData()).getValue()){
+                    best = tempBest;
                 }
 
+                Node<MiniMaxState> previous = graph.getNode(source).get();
+                previous.getData().setValue((best.getData()).getValue());
+                if(tempBest.getData().getValue() <= alpha)
+                    return tempBest;
+
+                if(tempBest.getData().getValue() <= beta)
+                    beta = tempBest.getData().getValue();
+
             }
+
             return best;
         }
 
     }
-
 
 
     private static int evaluvateState(Node<MiniMaxState> source) {
