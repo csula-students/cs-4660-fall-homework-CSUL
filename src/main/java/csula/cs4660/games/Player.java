@@ -116,7 +116,6 @@ class Player {
         }
     }
     private static boolean hasUnvisitedNode(List<Node> neibhourNodes) {
-        // TODO Auto-generated method stub
         for(Node<Tile> eachNode : neibhourNodes){
             if(! visitedNodes.contains(eachNode)){
                 return true;
@@ -158,8 +157,6 @@ class Player {
         for(Coordinate eachOpponentLocation : opponentsLocations){
             initialState += "#" + eachOpponentLocation.getX() + "+" + eachOpponentLocation.getY();
         }
-
-
 
 
         Node<MiniMaxState> start = new Node<MiniMaxState>(new MiniMaxState(board,0,initialState));
