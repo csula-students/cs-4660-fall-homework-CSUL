@@ -3,6 +3,7 @@ package csula.cs4660.graphs;
 import csula.cs4660.graphs.representations.Representation;
 import csula.cs4660.graphs.searches.SearchStrategy;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,6 +83,24 @@ public class Graph {
         return strategy.getNode(index);
     }
 
+    public Optional<Node> getNode(Node node) {
+        return strategy.getNode(node);
+    }
+
+    /**
+     * A simple method to get all nodes out of graph
+     */
+    public Collection<Node> getNodes() {
+        return strategy.getNodes();
+    }
+
+
+    /**
+     * A simple method to get all edges out of graph
+     */
+    public Collection<Edge> getEdges() {
+        return strategy.getEdges();
+    }
     /**
      * Search through this graph from sourceNode to distNode and return a list
      * of edges in between

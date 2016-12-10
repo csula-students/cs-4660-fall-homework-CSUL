@@ -4,8 +4,10 @@ import csula.cs4660.graphs.Edge;
 import csula.cs4660.graphs.Node;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 /**
  * Interface to define common behaviors across different representations
@@ -63,6 +65,11 @@ public interface Representation {
     int distance(Node from, Node to);
 
     Optional<Node> getNode(int index);
+    Optional<Node> getNode(Node node);
+
+    Collection<Node> getNodes();
+
+    Collection<Edge> getEdges();
 
     String toString();
 }
