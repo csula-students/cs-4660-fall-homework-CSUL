@@ -58,7 +58,7 @@ class Player {
             if(isEnemyClose( new Coordinate(currentRow, currentColumn), opponentsLocations , 7 )){
                 Graph graphMinMax = new Graph();
                 graphMinMax = buildGraph(board,currentColumn,currentRow,opponentsLocations);
-                Node best = getBestMove(graphMinMax, new Node<MiniMaxState>(new MiniMaxState(board, 0 , initialState)), 4
+                Node best = getBestMove(graphMinMax, new Node<MiniMaxState>(new MiniMaxState(board, 0 , initialState)), 3
                         , Integer.MIN_VALUE, Integer.MAX_VALUE,true);
                 int rowInitial = Integer.parseInt(initialState.split("#")[P].split("\\+")[0]);
                 int columnInitial = Integer.parseInt(initialState.split("#")[P].split("\\+")[1]);
